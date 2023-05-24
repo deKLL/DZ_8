@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+// Функція для видалення пустих рядків з двовимірного масиву
+void removeEmptyRows(std::vector<std::vector<std::string>>& array) {
+    std::vector<std::vector<std::string>> newArray;
+
+    for (const auto& row : array) {
+        if (!row.empty()) {
+            newArray.push_back(row);
+        }
+    }
+
+    array = newArray;
+}
+
+int main() {
+    // Початковий двовимірний масив з деякими порожніми рядками
+    std::vector<std::vector<std::string>> array = {
+        {"Hello", "Bro"},
+        {},
+        {"ITstep", "Best"},
+        {},
+        {"Example"},
+        {}
+    };
+
+    std::cout << "Початковий масив:" << std::endl;
+    for (const auto& row : array) {
+        for (const auto& element : row) {
+            std::cout << element << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    //Функція для видалення порожніх рядків
+    removeEmptyRows(array);
+
+    std::cout << "Масив після видалення порожніх рядків:" << std::endl;
+    for (const auto& row : array) {
+        for (const auto& element : row) {
+            std::cout << element << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
